@@ -8,6 +8,13 @@ public class ConnectFourBoard {
     }
     
     public void printBoard() {
+
+        for (int c = 0; c < Board[0].length; c++) {
+            for (int r = 6; numTokensInColumn[r] > r; r++) {
+                Board[r][c] = 1;
+            }
+        }
+
         System.out.println("   1   2   3   4   5   6   7");
         
 
@@ -26,7 +33,7 @@ public class ConnectFourBoard {
 
     public void incrementColumn(int colNum) {
         numTokensInColumn[colNum-1] +=1;
-
+        
     }
 
     
