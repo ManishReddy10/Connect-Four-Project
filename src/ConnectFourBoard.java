@@ -10,10 +10,13 @@ public class ConnectFourBoard {
     public void printBoard() {
         System.out.println("   1   2   3   4   5   6   7");
         
+
         for (int r = 0; r < Board.length; r++) {
+
             for (int c = 0; c < Board[0].length; c++) {
                 System.out.print(" | " + Board[r][c]);
             }
+
             System.out.println(" |");
             System.out.println("---------------------------------");
         }
@@ -21,14 +24,12 @@ public class ConnectFourBoard {
         System.out.println();
     }
 
-    public void incrementCollumn(int colNum) {
+    public void incrementColumn(int colNum) {
         numTokensInColumn[colNum-1] +=1;
 
     }
 
-    public void updateBoard() {
-        
-    }
+    
 
 }
 
