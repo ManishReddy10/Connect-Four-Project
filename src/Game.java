@@ -9,6 +9,7 @@ public class Game {
 
         System.out.println("Enter column #");
         myConnectFourBoard.incrementColumn(UserInput.nextInt());
+        myConnectFourBoard.printBoard();
         
         
     }

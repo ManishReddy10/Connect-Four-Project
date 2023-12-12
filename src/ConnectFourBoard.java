@@ -10,7 +10,7 @@ public class ConnectFourBoard {
     public void printBoard() {
 
         for (int c = 0; c < Board[0].length; c++) {
-            for (int r = 6; numTokensInColumn[r] > r; r++) {
+            for (int r = 6; r > numTokensInColumn[r] && numTokensInColumn[r] > 0; r--) {
                 Board[r][c] = 1;
             }
         }
