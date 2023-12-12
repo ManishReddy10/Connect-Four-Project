@@ -30,6 +30,14 @@ public class ConnectFourBoard {
 
         System.out.println();
     }
+    public void Player1Move(int choice){
+	for (int row = 5; row = 0; row--){
+	    if (Board[row][choice-1]==0){
+		Board[row][choice-1]=1;
+		break;
+	    }
+	}
+    }
 
     public void incrementColumn(int colNum) {
         numTokensInColumn[colNum-1] +=1;
