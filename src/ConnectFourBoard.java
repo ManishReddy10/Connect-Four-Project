@@ -4,16 +4,9 @@ public class ConnectFourBoard {
 
     public ConnectFourBoard() {
         Board = new int[6][7];
-
     }
     
     public void printBoard() {
-
-        for (int c = 0; c < Board[0].length; c++) {
-            for (int r = 6; r > numTokensInColumn[r] && numTokensInColumn[r] > 0; r--) {
-                Board[r][c] = 1;
-            }
-        }
 
         System.out.println("   1   2   3   4   5   6   7");
         
@@ -31,11 +24,19 @@ public class ConnectFourBoard {
         System.out.println();
     }
 
-    public void incrementColumn(int colNum) {
-        numTokensInColumn[colNum-1] +=1;
+    public void incrementColumn(int givenColNum, int playerNum) {
+        int colNum = givenColNum-1;
+    
+        numTokensInColumn[colNum] +=1;
+    
+        int rowCoordinate = 6 - numTokensInColumn[colNum];
         
+        for (int r = 5; r >= rowCoordinate; r--) {
+            Board[r][colNum] = playerNum;
+        }
     }
 
+    
     
 
 }
