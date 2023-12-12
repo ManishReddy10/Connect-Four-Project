@@ -25,15 +25,23 @@ public class ConnectFourBoard {
     }
 
     public void incrementColumn(int givenColNum, int playerNum) {
-        int colNum = givenColNum-1;
-    
-        numTokensInColumn[colNum] +=1;
-    
-        int rowCoordinate = 6 - numTokensInColumn[colNum];
-        
-        for (int r = 5; r >= rowCoordinate; r--) {
-            Board[r][colNum] = playerNum;
+
+        int c = givenColNum-1;
+
+        for (int r = 5; r >=0; r--) {
+            if (Board[r][c] == 0) {
+                Board[r][c] = playerNum;
+                break;
+            }
         }
+    
+        // numTokensInColumn[colNum] +=1;
+    
+        // int rowCoordinate = 6 - numTokensInColumn[colNum];
+        
+        // for (int r = 5; r >= rowCoordinate; r--) {
+        //     Board[r][colNum] = playerNum;
+        // }
     }
 
     
