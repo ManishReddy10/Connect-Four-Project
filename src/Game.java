@@ -7,13 +7,22 @@ public class Game {
         ConnectFourBoard myConnectFourBoard = new ConnectFourBoard();
         myConnectFourBoard.printBoard();
 
-        System.out.println("Enter column #");
-        myConnectFourBoard.incrementColumn(UserInput.nextInt());
-        myConnectFourBoard.printBoard();
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Player 1: enter column #");
+            myConnectFourBoard.incrementColumn(UserInput.nextInt(), 1);
+            myConnectFourBoard.printBoard();
+
+            System.out.println("Player 2: enter column #");
+            myConnectFourBoard.incrementColumn(UserInput.nextInt(), 2);
+            myConnectFourBoard.printBoard();
+        }
+        
+
+
+        
         
         
     }
-    
 
 }
 

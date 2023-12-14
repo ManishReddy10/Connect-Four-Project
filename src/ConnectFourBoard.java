@@ -1,6 +1,5 @@
 public class ConnectFourBoard {
     private int[][] Board;
-    private int numTokensInColumn[] = new int[7];
 
     public ConnectFourBoard() {
         Board = new int[6][7];
@@ -30,23 +29,40 @@ public class ConnectFourBoard {
 
         System.out.println();
     }
-    public void Player1Move(int choice){
-	for (int row = 5; row = 0; row--){
-	    if (Board[row][choice-1]==0){
-		Board[row][choice-1]=1;
-		break;
-	    }
-	}
-    }
 
-    public void incrementColumn(int colNum) {
-        numTokensInColumn[colNum-1] +=1;
+    public void incrementColumn(int givenColNum, int playerNum) {
+        int c = givenColNum-1;
+        for (int r = 5; r >=0; r--) {
+	    if(Board[0][c] == 2 || Board[0][c] == 1){
+		    System.out.println("Space exists; Try a different spot :(");
+		    break;
+	    }
+	    else if (Board[r][c] == 0) {
+            Board[r][c] = playerNum;
+            break;
+        }
+        }
+        // numTokensInColumn[colNum] +=1;
+    
+        // int rowCoordinate = 6 - numTokensInColumn[colNum];
         
     }
 
-    
-
+    public boolean didPlayerXWin(int playerNum) {
+        // check vertical win condition
+        int iteration = 0;
+        for (int r = 0; r >= 6; r++) {
+            for (int c = 1; c >= 7; c++) {
+                if (playerNum == 1) {
+                    if ((Board[r][0] == Board[r][c])) {
+                        iteration++;
+                    }
+                    if (iteration == 6) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
-
-
-
