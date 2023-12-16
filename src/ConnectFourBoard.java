@@ -1,5 +1,6 @@
 public class ConnectFourBoard {
     private int[][] Board;
+    private int numTokensInColumn[] = new int[7];
 
     public ConnectFourBoard() {
         Board = new int[6][7];
@@ -48,15 +49,17 @@ public class ConnectFourBoard {
         
     }
 
-    public boolean didPlayerXWin(int playerNum) {
+    /*public boolean didPlayerXWin(int playerNum) {
         // check vertical win condition
         int iteration = 0;
-        for (int r = 0; r >= 6; r++) {
-            for (int c = 1; c >= 7; c++) {
+        for (int c = 0; c > 6; c++) {
+            for (int r = 1; r > 7; r++) {
                 if (playerNum == 1) {
-                    if ((Board[r][0] == Board[r][c])) {
+                    if ((Board[0][c]==1&&Board[r][c]==1)) {
                         iteration++;
+                        System.out.println(iteration+"zoop");
                     }
+                System.out.println(iteration+"zoop");
                     if (iteration == 6) {
                         return true;
                     }
@@ -64,5 +67,60 @@ public class ConnectFourBoard {
             }
         }
         return false;
+    }*/
+
+    public boolean checkColumns(int player) {
+        for (int row = 0; row <= 6 - 4; row++) {
+            for (int col = 0; col < 7; col++) {
+                if (Board[row][col] == player &&
+                    Board[row + 1][col] == player &&
+                    Board[row + 2][col] == player &&
+                    Board[row + 3][col] == player) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+    public boolean checkRows(int player) {
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col <= 7 - 4; col++) {
+                if (Board[row][col] == player &&
+                    Board[row][col + 1] == player &&
+                    Board[row][col + 2] == player &&
+                    Board[row][col + 3] == player) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean checkDiagonals(int player) {
+        // Check diagonals from top-left to bottom-right
+        for (int row = 0; row <= 6 - 4; row++) {
+            for (int col = 0; col <= 7 - 4; col++) {
+                if (Board[row][col] == player &&
+                    Board[row + 1][col + 1] == player &&
+                    Board[row + 2][col + 2] == player &&
+                    Board[row + 3][col + 3] == player) {
+                    return true;
+                }
+            }
+        }
+
+        // Check diagonals from top-right to bottom-left
+        for (int row = 0; row <= 6 - 4; row++) {
+            for (int col = 3; col < 7; col++) {
+                if (Board[row][col] == player &&
+                    Board[row + 1][col - 1] == player &&
+                    Board[row + 2][col - 2] == player &&
+                    Board[row + 3][col - 3] == player) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }
